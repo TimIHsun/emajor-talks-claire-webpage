@@ -1,0 +1,36 @@
+---
+title: "生成網頁"
+author: "邱奕勳"
+date: "2019/9/11"
+output: html_document
+params:
+  "_Speaker_": claire
+ 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+#載入網頁coding
+readLines("index.html") -> indexContent
+```
+c(indexContent,"_Speaker_", speaker),c((indexContent,"_speechContent_","學姊分享會"))
+```{r}
+#取代
+library(stringr)
+str_replace_all(indexContent,
+                c(
+                  "_Speaker_"= params$`_Speaker_`,
+                  "_speechContent_"="學姊分享會")
+                ) -> newindexContent
+```
+
+#寫入
+```{r}
+writeLines(newindexContent, "newindex.html")
+```
+
