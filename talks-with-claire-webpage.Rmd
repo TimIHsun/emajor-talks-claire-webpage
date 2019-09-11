@@ -13,14 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-
-```{r}
 #載入網頁coding
+```{r}
+
 readLines("index.html") -> indexContent
 ```
-c(indexContent,"_Speaker_", speaker),c((indexContent,"_speechContent_","學姊分享會"))
-```{r}
+
 #取代
+```{r}
+
 library(stringr)
 str_replace_all(indexContent,
                 c(
